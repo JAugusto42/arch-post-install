@@ -7,6 +7,8 @@
 #-[TODO]-----------------------------------------#
 # Passar variável $PKG como argumento para que   #
 # possa ser usado o aur helper escolhido         #
+#-[TODO]-----------------------------------------#
+# Adicionar uma opção de instalação de interface #
 ##################################################
 
 function aur_helper_install() {
@@ -78,7 +80,7 @@ function main() {
   [2] - Browser
   [3] - Terminals
   [4] - Development
-  [5] - 5Office
+  [5] - Office
   [6] - Text Editors
   [7] - Communication
   [8] - Fonts
