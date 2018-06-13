@@ -5,11 +5,45 @@
 # Date       = 12/06/2018                        #
 # LastUpdate = 12/06/2018                        #
 #-[TODO]-----------------------------------------#
-# Passar variável $PKG como argumento para que   #
-# possa ser usado o aur helper escolhido         #
-#-[TODO]-----------------------------------------#
 # Adicionar uma opção de instalação de interface #
 ##################################################
+
+function browser_install() {
+    clear
+    read -p "
+    ----------------------
+    --- Select browser ---
+    ----------------------
+    [1] - Firefox
+    [2] - Google-Chome
+    [3] - Opera
+        0 - Back
+->" input;
+
+    case $input in
+        1)
+            clear
+            sudo pacman -Sy firefox
+            ;;
+        2)
+            clear
+            $PKG -S google-chrome
+            ;;
+        3)
+            clear
+            sudo pacman -Sy opera
+            ;;
+        0)
+            main
+            ;;
+        *)
+            clear
+            echo 'Wrong Input, try again...'
+            sleep 1
+            browser_install
+            ;;
+    esac
+}
 
 function aur_helper_install() {
     clear
@@ -61,13 +95,12 @@ function install() {
          cd ${PKG}
          if sudo true; then
              makepkg -csi --noconfirm
+             main
          else
              echo "Unable to makepkg, Permission Error!"
              exit 1
          fi
      done
-
-
 }
 
 function main() {
@@ -97,7 +130,7 @@ function main() {
 
     2)
         browser_install
-      ;;
+        ;;
     3)
         terminals_install
         ;;
