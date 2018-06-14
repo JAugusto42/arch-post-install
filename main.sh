@@ -93,8 +93,9 @@ function aur_helper_install() {
     [2] - bauerbill
     [3] - trizen
     [4] - aurman
+        [0] - back
 ->" input;
-
+    #TODO trocar pelo case
     if [[ $input -eq 1 ]]; then
         clear
         echo "Installing yay..."
@@ -119,6 +120,8 @@ function aur_helper_install() {
 
         install "aurman"
 
+    elif [[ $input -eq 0 ]]; then
+        main
     else
         echo "Wrong input, try again..."
         aur_helper_install
