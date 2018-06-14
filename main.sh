@@ -3,10 +3,47 @@
 #[INFO]###########################################
 # Autor      = José Augusto a.k.a dük3n          #
 # Date       = 12/06/2018                        #
-# LastUpdate = 12/06/2018                        #
+# LastUpdate = 13/06/2018                        #
 #-[TODO]-----------------------------------------#
 # Adicionar uma opção de instalação de interface #
 ##################################################
+
+function terminals_install() {
+    clear
+    read -p "
+    -----------------------
+    --- Select terminal ---
+    -----------------------
+    [1] - Terminator
+    [2] - Tilix
+    [3] - Guake
+        [0] - Back
+->" input;
+
+    case $input in
+        1)
+            sudo pacman -Sy terminator
+            terminals_install
+            ;;
+        2)
+            sudo pacman -Sy tilix
+            terminals_install
+            ;;
+        3)
+            sudo pacman -Sy guake
+            terminals_install
+            ;;
+        0)
+            main
+            ;;
+        *)
+            clear
+            echo "Wrong input, try again..."
+            sleep 1
+            terminals_install
+    esac
+
+}
 
 function browser_install() {
     clear
@@ -24,14 +61,17 @@ function browser_install() {
         1)
             clear
             sudo pacman -Sy firefox
+            browser_install
             ;;
         2)
             clear
             $PKG -S google-chrome
+            browser_install
             ;;
         3)
             clear
             sudo pacman -Sy opera
+            browser_install
             ;;
         0)
             main
