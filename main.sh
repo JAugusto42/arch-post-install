@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #[INFO]###########################################
-# Autor      = José Augusto a.k.a dük3n          #
+# Autor      = José Augusto                      #
 # Date       = 12/06/2018                        #
 # LastUpdate = 13/06/2018                        #
 #-[TODO]-----------------------------------------#
