@@ -5,8 +5,84 @@
 # Date       = 12/06/2018                        #
 # LastUpdate = 13/06/2018                        #
 #-[TODO]-----------------------------------------#
-# Adicionar uma opção de instalação de interface #
 ##################################################
+
+function text_editors_install() {
+    clear
+    read -p "
+    ----------------------------
+    --- Select a office tool ---
+    ----------------------------
+    [1] - libreoffice-fresh-pt-br
+    [2] - mousepad
+    [3] - leafpad
+->" input;
+
+    case $input in
+        1)
+            sudo pacman -Sy libreoffice-fresh-pt-br
+            text_editors_install
+            ;;
+        2)
+            sudo pacman -Sy mousepad
+            text_editors_install
+            ;;
+        3)
+            sudo pacman -Sy leafpad
+            text_editors_install
+            ;;
+        0)
+            main
+            ;;
+        *)
+            clear
+            echo "Wrong Input, try again..."
+            sleep 1
+            text_editors_install
+    esac
+}
+
+function development_install() {
+    clear
+    read -p "
+    ---------------------------------
+    --- Select a development tool ---
+    ---------------------------------
+    [1] - Atom
+    [2] - Sublime
+    [3] - Visual Studio Code
+    [4] - Gvim
+        [0] - back
+->" input;
+
+    case $input in
+        1)
+            sudo pacman -Sy atom
+            development_install
+            ;;
+        2)
+            # Install from oficial guide on site
+            development_install
+            ;;
+        3)
+            ${PKG} -S visual-studio-code-bin
+            development_install
+            ;;
+        4)
+            sudo pacman -Sy gvim
+            development_install
+            ;;
+        0)
+            main
+            ;;
+        *)
+            clear
+            echo "Wrong Input, try again..."
+            sleep 1
+            development_install
+    esac
+
+}
 
 function terminals_install() {
     clear
@@ -17,6 +93,7 @@ function terminals_install() {
     [1] - Terminator
     [2] - Tilix
     [3] - Guake
+    [4] - termite
         [0] - Back
 ->" input;
 
@@ -32,6 +109,9 @@ function terminals_install() {
         3)
             sudo pacman -Sy guake
             terminals_install
+            ;;
+        4)
+            sudo pacman -Sy termite
             ;;
         0)
             main
@@ -130,6 +210,8 @@ function aur_helper_install() {
 }
 
 function install() {
+    # This function exists for aur_helper installer,
+    # because i use the package on aur with a pkgbuild. 
     for PKG in $1; do
         curl -o /tmp/${PKG}.tar.gz https://aur.archlinux.org/cgit/aur.git/snapshot/${PKG}.tar.gz
         cd /tmp
@@ -156,11 +238,10 @@ function main() {
   [2] - Browser
   [3] - Terminals
   [4] - Development
-  [5] - Office
-  [6] - Text Editors
-  [7] - Communication
-  [8] - Fonts
-  [9] - Tools
+  [5] - Text Editors
+  [6] - Communication
+  [7] - Fonts
+  [8] - Tools
       0 - Exit
 
 -> " input
@@ -170,7 +251,6 @@ function main() {
     1)
         aur_helper_install
         ;;
-
     2)
         browser_install
         ;;
@@ -181,15 +261,12 @@ function main() {
         development_install
         ;;
     5)
-        office_install
-        ;;
-    6)
         text_editors_install
         ;;
-    7)
+    6)
         communication_install
         ;;
-    8)
+    7)
         fonts_install
         ;;
     9)
