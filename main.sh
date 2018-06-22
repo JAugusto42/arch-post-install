@@ -77,12 +77,15 @@ function fonts_install() {
             ;;
         3)
             sudo pacman -Sy ttf-fira-code
+            font_install
             ;;
         4)
             sudo pacman -Sy ttf-font-awesome
+            font_install
             ;;
         5)
             sudo pacman -Sy ttf-liberation
+            font_install
             ;;
         0)
             main
@@ -234,6 +237,7 @@ function terminals_install() {
             ;;
         4)
             sudo pacman -Sy termite
+            terminals_install
             ;;
         0)
             main
