@@ -3,9 +3,129 @@
 #[INFO]###########################################
 # Autor      = José Augusto                      #
 # Date       = 12/06/2018                        #
-# LastUpdate = 13/06/2018                        #
+# LastUpdate = 22/06/2018                        #
 #-[TODO]-----------------------------------------#
+# Add IRC tools                                  #
+# Add more tools                                 #
 ##################################################
+
+function docker_install() {
+    clear
+    read -p "
+    -------------------------
+    --- Installing docker ---
+    -------------------------
+    "
+    sudo pacman -Sy docker
+
+    sudo systemctl start docker
+    sudo systemctl enable docker
+    sudo usermod -aG docker $USER
+    sudo pip install docker-compose
+}
+
+function tools_install() {
+    clear
+    read -p "
+    --------------------
+    --- Select Tools ---
+    --------------------
+    [1] - docker
+    [2] - spotify
+->" input;
+
+    case $input in
+        1)
+            docker_install
+            ;;
+        2)
+            ${PKG} -S spotify
+            ;;
+        0)
+            main
+            ;;
+        *)
+            clear
+            echo "Wrong input, try again..."
+            sleep 1
+            tools_install
+    esac
+
+}
+
+function fonts_install() {
+    clear
+    read -p "
+    --------------------
+    --- Select fonts ---
+    --------------------
+    [1] - ttf-dejavu
+    [2] - ttf-hack
+    [3] - ttf-fire-code
+    [4] - ttf-font-awesome
+    [5] - ttf-liberation
+->" input;
+
+    case $input in
+        1)
+            sudo pacman -Sy ttf-dejavu
+            font_install
+            ;;
+        2)
+            sudo pacman -Sy ttf-hack
+            font_install
+            ;;
+        3)
+            sudo pacman -Sy ttf-fira-code
+            ;;
+        4)
+            sudo pacman -Sy ttf-font-awesome
+            ;;
+        5)
+            sudo pacman -Sy ttf-liberation
+            ;;
+        0)
+            main
+            ;;
+        *)
+            clear
+            echo "Wrong Input, try again..."
+            sleep 1
+            font_install
+    esac
+
+}
+
+function communication_install() {
+    clear
+    read -p "
+    --------------------
+    --- Select tools ---
+    --------------------
+    [1] - Telegram
+    [2] - slack
+->" input;
+
+    case $input in
+        1)
+            sudo pacman -Sy telegram-desktop
+            communication_install
+            ;;
+        2)
+            sudo pacman -Sy slack-desktop
+            communication_install
+            ;;
+        0)
+            main
+            ;;
+        *)
+            clear
+            echo "Wrong input, try again..."
+            sleep 1
+            communication_install
+    esac
+
+}
 
 function text_editors_install() {
     clear
@@ -13,9 +133,10 @@ function text_editors_install() {
     ----------------------------
     --- Select a office tool ---
     ----------------------------
-    [1] - libreoffice-fresh-pt-br
+    [1] - libreoffice
     [2] - mousepad
     [3] - leafpad
+        [0] - back
 ->" input;
 
     case $input in
@@ -40,6 +161,7 @@ function text_editors_install() {
             sleep 1
             text_editors_install
     esac
+
 }
 
 function development_install() {
@@ -163,6 +285,7 @@ function browser_install() {
             browser_install
             ;;
     esac
+
 }
 
 function aur_helper_install() {
@@ -226,6 +349,7 @@ function install() {
              exit 1
          fi
      done
+
 }
 
 function main() {
