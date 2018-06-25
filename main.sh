@@ -22,6 +22,8 @@ function docker_install() {
     sudo systemctl enable docker
     sudo usermod -aG docker $USER
     sudo pip install docker-compose
+
+    tools_install
 }
 
 function tools_install() {
@@ -32,6 +34,15 @@ function tools_install() {
     --------------------
     [1] - docker
     [2] - spotify
+    [3] - wget
+    [4] - curl
+    [5] - libva intel driver
+    [6] - vlc
+    [7] - python pip (Install for python2 and python3)
+    [8] - nmap
+    [9] - xarchiver
+   [10] - gtk engine murrine
+        [0] - Back
 ->" input;
 
     case $input in
@@ -40,6 +51,39 @@ function tools_install() {
             ;;
         2)
             ${PKG} -S spotify
+            tools_install
+            ;;
+        3)
+            sudo pacman -Sy wget
+            tools_install
+            ;;
+        4)
+            sudo pacman -Sy curl
+            tools_install
+            ;;
+        5)
+            sudo pacman -Sy libva-intel-driver
+            tools_install
+            ;;
+        6)
+            sudo pacman -Sy vlc qt4
+            tools_install
+            ;;
+        7)
+            sudo pacman -Sy python-pip python2-pip
+            tools_install
+            ;;
+        8)
+            sudo pacman -Sy nmap
+            tools_install
+            ;;
+        9)
+            sudo pacman -Sy zip unzip unrar p7zip lzop cpio xarchiver
+            tools_install
+            ;;
+        10)
+            sudo pacman -Sy gtk-engine-murrine
+            tools_install
             ;;
         0)
             main
