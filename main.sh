@@ -230,7 +230,14 @@ function development_install() {
             development_install
             ;;
         2)
-            # Install from oficial guide on site
+            echo "Installing the PGP key."
+            curl -O https://download.sublimetext.com/sublimehq-pub.gpg
+            sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
+            clear
+            echo "Add sublime server to pacman.conf."
+            echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
+            clear
+            sudo pacman -Sy sublime-text
             development_install
             ;;
         3)
