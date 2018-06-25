@@ -108,6 +108,7 @@ function fonts_install() {
     [3] - ttf-fire-code
     [4] - ttf-font-awesome
     [5] - ttf-liberation
+        [0] - Back
 ->" input;
 
     case $input in
