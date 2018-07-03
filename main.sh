@@ -152,6 +152,7 @@ function communication_install() {
     --------------------
     [1] - Telegram
     [2] - slack
+        [0] - back
 ->" input;
 
     case $input in
@@ -175,30 +176,50 @@ function communication_install() {
 
 }
 
-function text_editors_install() {
+function office_pdf_install() {
     clear
     read -p "
-    ----------------------------
-    --- Select a office tool ---
-    ----------------------------
+    --------------------------------------
+    --- Select a office and pdfs tools ---
+    --------------------------------------
     [1] - libreoffice
     [2] - mousepad
     [3] - leafpad
+    [4] - gedit
+    [5] - evince
+    [6] - evince-light
+    [7] - atril
         [0] - back
 ->" input;
 
     case $input in
         1)
             sudo pacman -Sy libreoffice-fresh-pt-br
-            text_editors_install
+            office_pdf_install
             ;;
         2)
             sudo pacman -Sy mousepad
-            text_editors_install
+            office_pdf_install 
             ;;
         3)
             sudo pacman -Sy leafpad
-            text_editors_install
+            office_pdf_install
+            ;;
+        4)
+            sudo pacman -Sy gedit
+            office_pdf_instal
+            ;;
+        5)
+            sudo pacman -Sy evince
+            office_pdf_install
+            ;;
+        6)
+            ${PKG} -S evince-light
+            office_pdf_install
+            ;;
+        7)
+            sudo pacman -Sy atril
+            office_pdf_install
             ;;
         0)
             main
@@ -418,7 +439,7 @@ function main() {
   [2] - Browser
   [3] - Terminals
   [4] - Development
-  [5] - Text Editors
+  [5] - Office and PDF tools
   [6] - Communication
   [7] - Fonts
   [8] - Tools
@@ -441,7 +462,7 @@ function main() {
         development_install
         ;;
     5)
-        text_editors_install
+        office_pdf_install
         ;;
     6)
         communication_install
