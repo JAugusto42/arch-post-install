@@ -114,23 +114,23 @@ function fonts_install() {
     case $input in
         1)
             sudo pacman -Sy ttf-dejavu
-            font_install
+            fonts_install
             ;;
         2)
             sudo pacman -Sy ttf-hack
-            font_install
+            fonts_install
             ;;
         3)
             sudo pacman -Sy ttf-fira-code
-            font_install
+            fonts_install
             ;;
         4)
             sudo pacman -Sy ttf-font-awesome
-            font_install
+            fonts_install
             ;;
         5)
             sudo pacman -Sy ttf-liberation
-            font_install
+            fonts_install
             ;;
         0)
             main
@@ -139,7 +139,7 @@ function fonts_install() {
             clear
             echo "Wrong Input, try again..."
             sleep 1
-            font_install
+            fonts_install
     esac
 
 }
@@ -470,7 +470,7 @@ function main() {
     7)
         fonts_install
         ;;
-    9)
+    8)
         tools_install
         ;;
     0)
