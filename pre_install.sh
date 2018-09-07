@@ -6,7 +6,7 @@ function main() {
     
     programs=(
     'xorg-server' 'xorg-xinit' 'gvfs-mtp' 'xf86-video-intel' 'alsa-utils' 'pulseaudio' 'pavucontrol'
-    'xdg-user-dirs' 'openssh' 'ufw' 'network-manager-applet'
+    'xdg-user-dirs' 'openssh' 'ufw' 'network-manager-applet' 'xf86-input-libinput'
     )
 
     for pkg in "${programs[@]}"; do
