@@ -30,10 +30,13 @@ function interface() {
     clear
     echo 'Installing an interface...'
 
-    programs=('xfce4' 'xfce4-goodies')
+    programs=(
+    'xfce4' 'xfce4-battery-plugin' 'xfce4-notes-plugin' 'xfce4-notifyd'
+    'xfce4-pulseaudio-plugin' 'xfce4-screenshooter' 'xfce4-whiskermenu-plugin'
+    )
 
     for pkg in "${programs[@]}"; do
-        pacman -Sy "${pkg}"
+        pacman -Sy "${pkg}" --noconfirm
     done
 
     login_manager
