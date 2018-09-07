@@ -1,12 +1,21 @@
 #!/usr/bin/env bash
 
+#[TODO]###################################
+# opçao para instalar um aur helper
+# Navegadores
+# evince-light
+# Sublime
+# 
+
 function main() {
     clear
-    echo "Instalando base para a pós instalação..."
+    echo "Installing base programs..."
     
     programs=(
     'xorg-server' 'xorg-xinit' 'gvfs-mtp' 'xf86-video-intel' 'alsa-utils' 'pulseaudio' 'pavucontrol'
-    'xdg-user-dirs' 'openssh' 'ufw' 'network-manager-applet' 'xf86-input-libinput'
+    'xdg-user-dirs' 'openssh' 'ufw' 'network-manager-applet' 'xf86-input-libinput' 'wget' 'curl'
+    'libva-intel-driver' 'zip' 'unzip' 'unrar' 'p7zip' 'lzop' 'cpio' 'xarchiver' 'gtk-engine-murrine'
+    'ttf-dejavu' 'ttf-hack' 'telegram-desktop' 'libreoffice-fresh-pt-br' 'leafpad'
     )
 
     for pkg in "${programs[@]}"; do
