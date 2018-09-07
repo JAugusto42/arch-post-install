@@ -33,7 +33,7 @@ function interface() {
     programs=('xfce4' 'xfce4-goodies')
 
     for pkg in "${programs[@]}"; do
-        pacman -Sy "${pkg}" --noconfirm
+        pacman -Sy "${pkg}"
     done
 
     login_manager
